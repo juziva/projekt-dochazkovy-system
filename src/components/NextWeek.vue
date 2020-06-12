@@ -14,7 +14,6 @@ export default {
 <style>
 .next_week_container{
    width: 20%;
-  height: 50px;
-  background-color: rgb(71, 71, 71);
+  background-color: rgb(31, 31, 31);
 }
 </style>

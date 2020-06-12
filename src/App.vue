@@ -32,6 +32,8 @@ export default {
 body{
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
+  background-color: rgb(31, 31, 31);
 }
 .week_container{
   display: flex;
