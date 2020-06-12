@@ -1,16 +1,27 @@
 <template>
   <div>
   <Header />
+    <div class="week_container">
+      <PreviousWeek />
+      <CurrentWeek />
+      <NextWeek />
+    </div>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue"
+import CurrentWeek from "./components/CurrentWeek.vue"
+import NextWeek from "./components/NextWeek.vue"
+import PreviousWeek from "./components/PreviousWeek.vue"
 
 export default {
   name: 'App',
   components: {
-    Header: Header
+    Header: Header,
+    CurrentWeek: CurrentWeek,
+    NextWeek: NextWeek,
+    PreviousWeek: PreviousWeek
   }
 
 };
@@ -21,5 +32,8 @@ export default {
 body{
   margin: 0;
   padding: 0;
+}
+.week_container{
+  display: flex;
 }
 </style>
