@@ -2,9 +2,9 @@
   <div>
   <Header />
     <div class="week_container">
-      <PreviousWeek />
+      <ArrowButton class="direction right" />
       <CurrentWeek />
-      <NextWeek />
+      <ArrowButton class="direction left" />
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
 <script>
 import Header from "./components/Header.vue"
 import CurrentWeek from "./components/CurrentWeek.vue"
-import NextWeek from "./components/NextWeek.vue"
+import ArrowButton from "./components/ArrowButton.vue"
 import PreviousWeek from "./components/PreviousWeek.vue"
 
 export default {
@@ -20,10 +20,8 @@ export default {
   components: {
     Header: Header,
     CurrentWeek: CurrentWeek,
-    NextWeek: NextWeek,
-    PreviousWeek: PreviousWeek
+    ArrowButton: ArrowButton
   }
-
 };
 
 </script>
