@@ -2,9 +2,10 @@
   <div>
   <Header />
     <div class="week_container">
-      <ArrowButton v-bind:direction="'l'" />
+      <ArrowButton v-bind:direction="'left'" />
       <CurrentWeek />
-      <ArrowButton v-bind:direction="'r'" />
+      <ArrowButton v-bind:direction="'right'" />
+
     </div>
   </div>
 </template>
@@ -13,6 +14,7 @@
 import Header from "./components/Header.vue"
 import CurrentWeek from "./components/CurrentWeek.vue"
 import ArrowButton from "./components/ArrowButton.vue"
+import Day from "./components/Day.vue"
 
 export default {
   name: 'App',

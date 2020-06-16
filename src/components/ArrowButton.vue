@@ -1,5 +1,5 @@
 <template>
-<div v-bind:class="{ left: direction === 'l', right: direction === 'r' }"></div>
+<div v-bind:class="[{ leftClass: direction === 'left', rightClass: direction === 'right' }, 'directionClass']"></div>
 </template>
 
 <script>
@@ -14,19 +14,19 @@ export default {
 </script>
 
 <style>
-.direction {
+.directionClass {
   width: 0;
   height: 0;
   border-style: solid;
   margin: 20px;
 }
-.right{
-  border-width: 10px 20px 10px 0;
-  border-color: transparent #ffffff transparent transparent;
-}
-.left{
+.rightClass{
   border-width: 10px 0 10px 20px;
   border-color: transparent transparent transparent #ffffff;
+}
+.leftClass{
+  border-width: 10px 20px 10px 0;
+  border-color: transparent #ffffff transparent transparent;
 }
 </style>
   
