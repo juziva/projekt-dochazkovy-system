@@ -1,10 +1,14 @@
 <template>
+<div v-bind:class="{ left: direction === 'l', right: direction === 'r' }"></div>
 </template>
 
 <script>
 
 export default {
   name: 'ArrowButton',
+  props: {
+    direction: String
+  }
 };
 
 </script>
