@@ -40,6 +40,7 @@ body{
   padding: 0;
   font-family: sans-serif;
   background-color: rgb(31, 31, 31);
+  color: white;
 }
 .week_container{
   display: flex;
