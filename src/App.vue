@@ -5,8 +5,14 @@
       <ArrowButton v-bind:direction="'left'" />
       <CurrentWeek />
       <ArrowButton v-bind:direction="'right'" />
-
     </div>
+      <Day />
+        <Day />
+          <Day />
+          <Day />
+            <Day />
+            <Day />
+              <Day />
   </div>
 </template>
 
@@ -21,7 +27,8 @@ export default {
   components: {
     Header: Header,
     CurrentWeek: CurrentWeek,
-    ArrowButton: ArrowButton
+    ArrowButton: ArrowButton,
+    Day: Day
   }
 };
 
@@ -37,4 +44,5 @@ body{
 .week_container{
   display: flex;
 }
+
 </style>

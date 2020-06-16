@@ -1,9 +1,8 @@
 <template>
-
+  <div class="dayContainer"></div>
 </template>
 
 <script>
-
 
 export default {
   name: 'Day',
@@ -15,5 +14,10 @@ export default {
 </script>
 
 <style>
-
+.dayContainer{
+  height: 100px;
+}
+.dayContainer:nth-child(odd){
+  background-color: rgb(27, 27, 27);
+}
 </style>
