@@ -1,20 +1,26 @@
 <template>
-  <div class="dayContainer">
-    <div class="date dayContainerColumn">{{date}}</div>
-    <div class="startTime dayContainerColumn"><input type="time" v-on:change="onInputChange" v-model="startTime"></div>
-    <div class="endTime dayContainerColumn"><input type="time" v-on:change="onInputChange" v-model="endTime"></div>
-    <div class="totalHours dayContainerColumn" >{{totalHours}}</div>
-  </div>
+    <div class="dayContainer">
+        <div class="date dayContainerColumn">{{date}}</div>
+        <div class="startTime dayContainerColumn">
+            <input type="time" v-on:change="recalculateTotalHours" v-model="startTime" />
+        </div>
+        <div class="endTime dayContainerColumn">
+            <input type="time" v-on:change="recalculateTotalHours" v-model="endTime" />
+        </div>
+        <div class="totalHours dayContainerColumn">{{totalHours.toFixed(1)}}</div>
+    </div>
 </template>
 
 <script>
+
+import moment from "moment"
 
 export default {
   name: 'Day',
   data(){
     return{
-      startTime: null,
-      endTime: null,
+      startTime: '08:00',
+      endTime: '17:00',
       totalHours: 0
     }
   },
@@ -23,32 +29,40 @@ export default {
     date: Date
   },
   methods:{
-  onInputChange(){
-    console.log(this.startTime + this.endTime)
-  }
+  recalculateTotalHours(){
+    const duration = moment.duration(moment(this.endTime, 'HH:mm') - moment(this.startTime, 'HH:mm'))
+    this.totalHours = duration.asHours() - 1
+    console.log(totalHours)
+  },
+  }, 
+  created() {
+    this.recalculateTotalHours()
   }
 };
 
 </script>
 
 <style>
-.dayContainer{
-  height: 100px;
-  display: flex;
-  align-items: center;
+.dayContainer {
+    height: 100px;
+    display: flex;
+    align-items: center;
 }
-.dayContainer:nth-child(odd){
-  background-color: rgb(27, 27, 27);
+.date {
+    display: none;
 }
-.dayContainerColumn{
-  flex-grow: 1;
-  text-align: center;
+.dayContainer:nth-child(odd) {
+    background-color: rgb(27, 27, 27);
+}
+.dayContainerColumn {
+    flex-grow: 1;
+    text-align: center;
 }
 
-input{
-  width: 50%;
-  height: 30px;
-  border-radius: 4px;
-  border: none;
+input {
+    width: 50%;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
 }
 </style>
