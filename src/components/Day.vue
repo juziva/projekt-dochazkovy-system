@@ -1,8 +1,9 @@
 <template>
   <div class="dayContainer">
     <div class="date dayContainerColumn">{{date}}</div>
-    <div class="startTime dayContainerColumn"><input type="text"></div>
-    <div class="endTime dayContainerColumn"><input type="text"></div>
+    <div class="startTime dayContainerColumn"><input type="time" v-on:change="onInputChange" v-model="startTime"></div>
+    <div class="endTime dayContainerColumn"><input type="time" v-on:change="onInputChange" v-model="endTime"></div>
+    <div class="totalHours dayContainerColumn" >{{totalHours}}</div>
   </div>
 </template>
 
@@ -10,8 +11,21 @@
 
 export default {
   name: 'Day',
+  data(){
+    return{
+      startTime: null,
+      endTime: null,
+      totalHours: 0
+    }
+  },
+  
   props: {
     date: Date
+  },
+  methods:{
+  onInputChange(){
+    console.log(this.startTime + this.endTime)
+  }
   }
 };
 
