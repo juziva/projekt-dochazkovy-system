@@ -6,13 +6,11 @@
       <CurrentWeek />
       <ArrowButton v-bind:direction="'right'" />
     </div>
-      <Day />
-        <Day />
-          <Day />
-          <Day />
-            <Day />
-            <Day />
-              <Day />
+    <ul>
+      <li v-for="day in days" :key="day">
+        <Day v-bind:date="day"/>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -24,6 +22,11 @@ import Day from "./components/Day.vue"
 
 export default {
   name: 'App',
+  data (){
+    return{
+      days: [new Date(2020,6,17), new Date(2020,6,17), new Date(2020,6,17)]
+    }
+  },
   components: {
     Header: Header,
     CurrentWeek: CurrentWeek,

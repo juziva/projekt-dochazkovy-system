@@ -10,13 +10,8 @@
 
 export default {
   name: 'Day',
-  data(){
-    return{
-      date: 'Pondělí 15.6.',
-    }
-  },
   props: {
-
+    date: Date
   }
 };
 
