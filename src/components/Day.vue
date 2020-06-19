@@ -1,23 +1,27 @@
 <template>
+<div class="wrapper">
     <div class="dayContainer">
         <div class="date dayContainerColumn">{{ date.locale("cs") }}</div>
-        <div class="startTime dayContainerColumn">
-            <input
-                type="time"
-                v-on:change="recalculateTotalHours"
-                v-model="startTime"
-            />
+        <div class="dayContainerRow">
+          <div class="startTime dayContainerColumn">
+              <input
+                  type="time"
+                  v-on:change="recalculateTotalHours"
+                  v-model="startTime"
+              />
+          </div>
+          <div class="endTime dayContainerColumn">
+              <input
+                  type="time"
+                  v-on:change="recalculateTotalHours"
+                  v-model="endTime"
+              />
+          </div>
+          <div class="totalHours dayContainerColumn">
+              {{ totalHours.toFixed(1) }}
+          </div>
         </div>
-        <div class="endTime dayContainerColumn">
-            <input
-                type="time"
-                v-on:change="recalculateTotalHours"
-                v-model="endTime"
-            />
-        </div>
-        <div class="totalHours dayContainerColumn">
-            {{ totalHours.toFixed(1) }}
-        </div>
+    </div>
     </div>
 </template>
 
@@ -54,13 +58,24 @@ export default {
 
 <style>
 .dayContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100px;
+    background-color: brown;
+}
+.dayContainerRow {
     display: flex;
     align-items: center;
+    flex-grow: 1;
+}
+.date{
+  align-items: center;
+  display: flex;
 }
 
-.dayContainer:nth-child(odd) {
-    background-color: rgb(27, 27, 27);
+.wrapper:nth-child(2) {
+    background-color: white;
 }
 .dayContainerColumn {
     flex-grow: 1;
