@@ -16,7 +16,7 @@ export default {
 .current_week_container {
     width: 60%;
     padding: 20px;
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(34, 34, 34);
     color: white;
     text-align: center;
 }
