@@ -82,8 +82,16 @@ body {
 }
 .week_container {
     display: flex;
+    background-color: rgb(34, 34, 34);
 }
 li {
     list-style-type: none;
+}
+li:nth-child(even) {
+    background-color: rgb(34, 34, 34);
+}
+ul{
+    margin: 0;
+    padding: 0;
 }
 </style>

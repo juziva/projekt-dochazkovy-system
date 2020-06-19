@@ -1,5 +1,4 @@
 <template>
-    <div class="wrapper">
         <div class="dayContainer">
             <div class="date dayContainerColumn">
                 {{ date.locale("cs").format("MMM Do YY") }}
@@ -23,7 +22,6 @@
                     {{ totalHours.toFixed(1) }}
                 </div>
             </div>
-        </div>
     </div>
 </template>
 
@@ -74,9 +72,6 @@ export default {
     display: flex;
 }
 
-.wrapper:nth-child(odd) {
-    background-color: rgb(0, 0, 0);
-}
 .dayContainerColumn {
     flex-grow: 1;
     text-align: center;
