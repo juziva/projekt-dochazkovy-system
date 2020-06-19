@@ -64,7 +64,6 @@ export default {
     flex-direction: column;
     align-items: center;
     height: 100px;
-    background-color: brown;
 }
 .dayContainerRow {
     display: flex;
@@ -76,8 +75,8 @@ export default {
     display: flex;
 }
 
-.wrapper:nth-child(2) {
-    background-color: white;
+.wrapper:nth-child(odd) {
+    background-color: rgb(0, 0, 0);
 }
 .dayContainerColumn {
     flex-grow: 1;

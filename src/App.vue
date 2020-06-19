@@ -2,7 +2,7 @@
     <div>
         <Header />
         <div class="week_container">
-            <ArrowButton v-bind:direction="'left'" />
+            <ArrowButton v-bind:direction="'left'" v-on:click.native="setPreviousWeek" />
             <CurrentWeek />
             <ArrowButton v-bind:direction="'right'" />
         </div>
@@ -31,6 +31,7 @@ export default {
     data() {
         return {
             days: [moment(), moment(), moment()],
+            CurrentWeekOffset: 0
         }
     },
     components: {
@@ -40,8 +41,10 @@ export default {
         Day: Day,
     },
     methods: {
+        
         magicFunction() {
             const currentDate = moment()
+            currentDate.add(this.CurrentWeekOffset,"week")
             const weekStart = currentDate.clone().startOf("week")
             const days = []
             for (let i = 0; i <= 6; i++) {
@@ -49,6 +52,9 @@ export default {
             }
             console.log(days)
             return days
+        },
+        setPreviousWeek(){
+            this.CurrentWeekOffset = -1
         },
     },
     created() {
@@ -62,13 +68,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color: red;
+    background-color: black;
     color: white;
 }
 .week_container {
     display: flex;
 }
-li{
+li {
     list-style-type: none;
 }
 </style>
