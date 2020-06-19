@@ -1,7 +1,7 @@
 <template>
         <div class="dayContainer">
             <div class="date dayContainerColumn">
-                {{ date.locale("cs").format("MMM Do YY") }}
+                {{ date.locale("cs").format("LLL") }}
             </div>
             <div class="dayContainerRow">
                 <div class="startTime dayContainerColumn">
