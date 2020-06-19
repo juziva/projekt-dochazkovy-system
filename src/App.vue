@@ -2,9 +2,15 @@
     <div>
         <Header />
         <div class="week_container">
-            <ArrowButton v-bind:direction="'left'" v-on:click.native="setPreviousWeek" />
-            <CurrentWeek />
-            <ArrowButton v-bind:direction="'right'" />
+            <ArrowButton
+                v-bind:direction="'left'"
+                v-on:click.native="setPreviousWeek"
+            />
+            <CurrentWeek v-bind:date="weekStart" />
+            <ArrowButton
+                v-bind:direction="'right'"
+                v-on:click.native="setNextWeek"
+            />
         </div>
         <ul>
             <li v-for="day in days" :key="day">
@@ -31,7 +37,7 @@ export default {
     data() {
         return {
             days: [moment(), moment(), moment()],
-            CurrentWeekOffset: 0
+            WeekStart: moment(),
         }
     },
     components: {
@@ -41,24 +47,27 @@ export default {
         Day: Day,
     },
     methods: {
-        
-        magicFunction() {
-            const currentDate = moment()
-            currentDate.add(this.CurrentWeekOffset,"week")
-            const weekStart = currentDate.clone().startOf("week")
+        updateDays() {
             const days = []
             for (let i = 0; i <= 6; i++) {
-                days.push(moment(weekStart).add(i, "days"))
+                days.push(moment(this.weekStart).add(i, "days"))
             }
             console.log(days)
-            return days
+            this.days = days
         },
-        setPreviousWeek(){
-            this.CurrentWeekOffset = -1
+        setPreviousWeek() {
+            this.weekStart = this.weekStart.add(-1, "week")
+            this.updateDays()
+        },
+        setNextWeek() {
+            this.weekStart = this.weekStart.add(1, "week")
+            this.updateDays()
         },
     },
     created() {
-        this.days = this.magicFunction()
+        const currentDate = moment()
+        this.weekStart = currentDate.clone().startOf("week")
+        this.updateDays()
     },
 }
 </script>
