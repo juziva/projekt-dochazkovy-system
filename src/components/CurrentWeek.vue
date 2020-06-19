@@ -1,15 +1,11 @@
 <template>
-    <div class="current_week_container">{{ currentWeek }}</div>
+    <div class="current_week_container"> {{ date.locale("cs").format("MMM Do YY") }}</div>
 </template>
 
 <script>
+import moment from "moment"
 export default {
     name: "CurrentWeek",
-    data() {
-        return {
-            currentWeek: "8.-14.6.2020",
-        }
-    },
     props: {
         date: moment,
     },

@@ -49,7 +49,6 @@ export default {
                 moment(this.endTime, "HH:mm") - moment(this.startTime, "HH:mm")
             )
             this.totalHours = duration.asHours() - 1
-            console.log(totalHours)
         },
     },
     created() {
