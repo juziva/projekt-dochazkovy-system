@@ -66,10 +66,12 @@ export default {
     display: flex;
     align-items: center;
     flex-grow: 1;
+    width: 90%;
 }
 .date {
     align-items: center;
     display: flex;
+    justify-content: center;
 }
 
 .dayContainerColumn {
@@ -77,9 +79,12 @@ export default {
     text-align: center;
     width: 70%;
 }
+.totalHours{
+    width: 30%;
+}
 
 input {
-    width: 50%;
+    width: 60%;
     height: 30px;
     border-radius: 4px;
     border: none;
