@@ -32,6 +32,7 @@ export default {
         return {
             days: [moment(), moment(), moment()],
             weekStart: moment(),
+            weekEnd: moment(),
         }
     },
     components: {

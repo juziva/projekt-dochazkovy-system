@@ -1,5 +1,5 @@
 <template>
-    <div class="current_week_container"> {{ date.locale("cs").format("MMM Do YY") }}</div>
+    <div class="current_week_container"> {{ date.locale("cs").format("MMM Do YY") }} - {{ date.locale("cs").add(6, 'days').format("MMM Do YY") }}</div>
 </template>
 
 <script>

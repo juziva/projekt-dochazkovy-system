@@ -60,7 +60,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100px;
+    height: 130px;
 }
 .dayContainerRow {
     display: flex;
@@ -75,6 +75,7 @@ export default {
 .dayContainerColumn {
     flex-grow: 1;
     text-align: center;
+    width: 70%;
 }
 
 input {
