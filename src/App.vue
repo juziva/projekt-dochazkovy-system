@@ -76,6 +76,7 @@ body {
 .week_container {
     display: flex;
     background-color: rgb(34, 34, 34);
+    justify-content: center;
 }
 li {
     list-style-type: none;
