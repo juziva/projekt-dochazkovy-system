@@ -62,10 +62,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color: rgb(31, 31, 31);
+    background-color: red;
     color: white;
 }
 .week_container {
     display: flex;
+}
+li{
+    list-style-type: none;
 }
 </style>

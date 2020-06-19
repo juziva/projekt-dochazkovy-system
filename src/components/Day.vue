@@ -1,5 +1,7 @@
 <template>
+<div class="wrapper">
     <div class="dayContainer">
+<<<<<<< HEAD
         <div class="date dayContainerColumn">
             {{ date.locale("cs").format("MMM Do YY") }}
         </div>
@@ -19,7 +21,29 @@
         </div>
         <div class="totalHours dayContainerColumn">
             {{ totalHours.toFixed(1) }}
+=======
+        <div class="date dayContainerColumn">{{ date.locale("cs") }}</div>
+        <div class="dayContainerRow">
+          <div class="startTime dayContainerColumn">
+              <input
+                  type="time"
+                  v-on:change="recalculateTotalHours"
+                  v-model="startTime"
+              />
+          </div>
+          <div class="endTime dayContainerColumn">
+              <input
+                  type="time"
+                  v-on:change="recalculateTotalHours"
+                  v-model="endTime"
+              />
+          </div>
+          <div class="totalHours dayContainerColumn">
+              {{ totalHours.toFixed(1) }}
+          </div>
+>>>>>>> 79692edd12312f6ce8ac8c82a40056f028ef43db
         </div>
+    </div>
     </div>
 </template>
 
@@ -56,13 +80,24 @@ export default {
 
 <style>
 .dayContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100px;
+    background-color: brown;
+}
+.dayContainerRow {
     display: flex;
     align-items: center;
+    flex-grow: 1;
+}
+.date{
+  align-items: center;
+  display: flex;
 }
 
-.dayContainer:nth-child(odd) {
-    background-color: rgb(27, 27, 27);
+.wrapper:nth-child(2) {
+    background-color: white;
 }
 .dayContainerColumn {
     flex-grow: 1;
