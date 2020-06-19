@@ -1,6 +1,8 @@
 <template>
     <div class="dayContainer">
-        <div class="date dayContainerColumn">{{ date.locale("cs") }}</div>
+        <div class="date dayContainerColumn">
+            {{ date.locale("cs").format("MMM Do YY") }}
+        </div>
         <div class="startTime dayContainerColumn">
             <input
                 type="time"

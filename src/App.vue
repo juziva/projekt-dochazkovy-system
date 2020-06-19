@@ -24,7 +24,7 @@ import "moment/locale/cs"
 
 moment.locale("cs")
 
-console.log(moment().format())
+console.log(moment().format("MMM Do YY"))
 
 export default {
     name: "App",
