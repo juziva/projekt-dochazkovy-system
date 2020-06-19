@@ -1,45 +1,55 @@
 <template>
     <div class="dayContainer">
-        <div class="date dayContainerColumn">{{date}}</div>
+        <div class="date dayContainerColumn">{{ date.locale("cs") }}</div>
         <div class="startTime dayContainerColumn">
-            <input type="time" v-on:change="recalculateTotalHours" v-model="startTime" />
+            <input
+                type="time"
+                v-on:change="recalculateTotalHours"
+                v-model="startTime"
+            />
         </div>
         <div class="endTime dayContainerColumn">
-            <input type="time" v-on:change="recalculateTotalHours" v-model="endTime" />
+            <input
+                type="time"
+                v-on:change="recalculateTotalHours"
+                v-model="endTime"
+            />
         </div>
-        <div class="totalHours dayContainerColumn">{{totalHours.toFixed(1)}}</div>
+        <div class="totalHours dayContainerColumn">
+            {{ totalHours.toFixed(1) }}
+        </div>
     </div>
 </template>
 
 <script>
-
 import moment from "moment"
 
 export default {
-  name: 'Day',
-  data(){
-    return{
-      startTime: '08:00',
-      endTime: '17:00',
-      totalHours: 0
-    }
-  },
-  
-  props: {
-    date: Date
-  },
-  methods:{
-  recalculateTotalHours(){
-    const duration = moment.duration(moment(this.endTime, 'HH:mm') - moment(this.startTime, 'HH:mm'))
-    this.totalHours = duration.asHours() - 1
-    console.log(totalHours)
-  },
-  }, 
-  created() {
-    this.recalculateTotalHours()
-  }
-};
+    name: "Day",
+    data() {
+        return {
+            startTime: "08:00",
+            endTime: "17:00",
+            totalHours: 0,
+        }
+    },
 
+    props: {
+        date: moment,
+    },
+    methods: {
+        recalculateTotalHours() {
+            const duration = moment.duration(
+                moment(this.endTime, "HH:mm") - moment(this.startTime, "HH:mm")
+            )
+            this.totalHours = duration.asHours() - 1
+            console.log(totalHours)
+        },
+    },
+    created() {
+        this.recalculateTotalHours()
+    },
+}
 </script>
 
 <style>
@@ -48,9 +58,7 @@ export default {
     display: flex;
     align-items: center;
 }
-.date {
-    display: none;
-}
+
 .dayContainer:nth-child(odd) {
     background-color: rgb(27, 27, 27);
 }
