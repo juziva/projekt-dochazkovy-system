@@ -43,9 +43,9 @@ export default {
     name: "Day",
     data() {
         return {
-            startTime: "8:00",
+            startTime: "08:00",
             endTime: "17:00",
-            totalHours: 0,
+            totalHours: 8,
             documentId: `${userId}:${this.date.format("YYYYMMDD")}`,
         }
     },
@@ -118,12 +118,12 @@ export default {
             .doc(this.documentId)
             .onSnapshot((doc) => {
                 if (doc.exists) {
-                    console.log
                     const fireDay = doc.data()
                     if (fireDay.startTime) {
-                        this.startTime = moment(fireDay.startTime, "x").format(
-                            "HH:mm"
-                        )
+                        console.log("neco", fireDay.startTime)
+                        const b = moment(fireDay.startTime, "x").format("HH:mm")
+                        console.log(b)
+                        this.startTime = b
                     }
                     if (fireDay.endTime) {
                         this.endTime = moment(fireDay.endTime, "x").format(
@@ -167,7 +167,6 @@ export default {
     text-align: center;
     font-size: 1rem;
     width: 90%;
-    
 }
 .totalHours {
     width: 10%;
@@ -186,7 +185,7 @@ input {
     color: rgb(128, 128, 128);
     font-size: 14px;
 }
-.dayInWeek1{
+.dayInWeek1 {
     padding: 0 10px 0 0;
 }
 </style>
