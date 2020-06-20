@@ -93,7 +93,7 @@ export default {
 .date {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
 }
 
@@ -116,5 +116,8 @@ input {
 .dayInWeek2{
     color: rgb(128, 128, 128);
     font-size: 14px;
+}
+.dayInWeek1{
+    padding: 0 10px 0 0;
 }
 </style>
