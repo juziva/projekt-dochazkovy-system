@@ -22,5 +22,7 @@ export default {
     background-color: black;
     color: white;
     text-align: center;
+    font-weight: bold;
+    font-size: 14px;
 }
 </style>

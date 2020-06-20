@@ -21,11 +21,11 @@ export default {
   margin: 15px;
 }
 .rightClass{
-  border-width: 10px 0 10px 20px;
+  border-width: 8px 0 8px 16px;
   border-color: transparent transparent transparent #6699CC;
 }
 .leftClass{
-  border-width: 10px 20px 10px 0;
+  border-width: 8px 16px 8px 0;
   border-color: transparent #6699CC transparent transparent;
 }
 </style>

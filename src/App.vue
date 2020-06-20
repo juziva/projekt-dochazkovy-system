@@ -17,7 +17,7 @@
                 <Day v-bind:date="day" />
             </li>
         </ul>
-        <SendButton />
+        <div id="snackbar">Hodiny aktualizovány</div>
     </div>
 </template>
 
@@ -26,7 +26,6 @@ import Header from "./components/Header.vue"
 import CurrentWeek from "./components/CurrentWeek.vue"
 import ArrowButton from "./components/ArrowButton.vue"
 import Day from "./components/Day.vue"
-import SendButton from "./components/SendButton.vue"
 import moment from "moment"
 import "moment/locale/cs"
 import db from "./db"
@@ -49,7 +48,6 @@ export default {
         CurrentWeek: CurrentWeek,
         ArrowButton: ArrowButton,
         Day: Day,
-        SendButton: SendButton,
     },
     methods: {
         updateDays() {
@@ -93,15 +91,60 @@ body {
 }
 li {
     list-style-type: none;
-    border-bottom: 1px solid rgb(83, 83, 83);
-    background-color: rgb(46, 46, 46);
+    border-bottom: 1px solid rgb(86, 83, 112);
+    background-color: #202029;
 }
-li:nth-child(n+6) {
+li:nth-child(n+6)>div {
     background-color: black;
+}
+li:nth-child(6) {
+    margin-top: 4px;
+    border-top: 1px solid rgb(86, 83, 112);
 }
 
 ul {
     margin: 0;
     padding: 0;
 }
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
 </style>
+    
