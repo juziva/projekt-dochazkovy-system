@@ -2,9 +2,15 @@
     <div>
         <Header />
         <div class="week_container">
-            <ArrowButton v-bind:direction="'left'" v-on:click.native="setPreviousWeek" />
+            <ArrowButton
+                v-bind:direction="'left'"
+                v-on:click.native="setPreviousWeek"
+            />
             <CurrentWeek v-bind:date="weekStart" />
-            <ArrowButton v-bind:direction="'right'" v-on:click.native="setNextWeek" />
+            <ArrowButton
+                v-bind:direction="'right'"
+                v-on:click.native="setNextWeek"
+            />
         </div>
         <ul>
             <li v-for="day in days" :key="day">
@@ -85,7 +91,7 @@ li {
 li:nth-child(even) {
     background-color: rgb(34, 34, 34);
 }
-ul{
+ul {
     margin: 0;
     padding: 0;
 }

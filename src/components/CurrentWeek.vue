@@ -1,7 +1,7 @@
 <template>
     <div class="current_week_container">
         {{ date.locale("cs").format("Do MMMM") }} -
-        {{ date.locale("cs").add(6, "days").format("Do MMMM Y") }}
+        {{ date.clone().locale("cs").add(6, "days").format("Do MMMM Y") }}
     </div>
 </template>
 
