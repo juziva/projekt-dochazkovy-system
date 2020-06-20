@@ -1,27 +1,27 @@
 <template>
-        <div class="dayContainer">
-            <div class="date dayContainerColumn">
-                {{ date.locale("cs").format("LLL") }}
+    <div class="dayContainer">
+        <div class="date dayContainerColumn">
+            {{ date.locale("cs").format("dddd Do MMMM") }}
+        </div>
+        <div class="dayContainerRow">
+            <div class="startTime dayContainerColumn">
+                <input
+                    type="time"
+                    v-on:change="recalculateTotalHours"
+                    v-model="startTime"
+                />
             </div>
-            <div class="dayContainerRow">
-                <div class="startTime dayContainerColumn">
-                    <input
-                        type="time"
-                        v-on:change="recalculateTotalHours"
-                        v-model="startTime"
-                    />
-                </div>
-                <div class="endTime dayContainerColumn">
-                    <input
-                        type="time"
-                        v-on:change="recalculateTotalHours"
-                        v-model="endTime"
-                    />
-                </div>
-                <div class="totalHours dayContainerColumn">
-                    {{ totalHours.toFixed(1) }}
-                </div>
+            <div class="endTime dayContainerColumn">
+                <input
+                    type="time"
+                    v-on:change="recalculateTotalHours"
+                    v-model="endTime"
+                />
             </div>
+            <div class="totalHours dayContainerColumn">
+                {{ totalHours.toFixed(1) }}
+            </div>
+        </div>
     </div>
 </template>
 
