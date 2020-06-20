@@ -27,6 +27,7 @@ import ArrowButton from "./components/ArrowButton.vue"
 import Day from "./components/Day.vue"
 import moment from "moment"
 import "moment/locale/cs"
+import db from "./db"
 
 moment.locale("cs")
 
@@ -36,10 +37,14 @@ export default {
     name: "App",
     data() {
         return {
-            days: [moment(), moment(), moment()],
+            days: [],
             weekStart: moment(),
             weekEnd: moment(),
+            firedays: [],
         }
+    },
+    firestore: {
+        firedays: db.collection("workDays"),
     },
     components: {
         Header: Header,

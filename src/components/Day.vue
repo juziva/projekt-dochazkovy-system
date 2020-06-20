@@ -47,9 +47,20 @@ export default {
                 moment(this.endTime, "HH:mm") - moment(this.startTime, "HH:mm")
             )
             this.totalHours = duration.asHours() - 1
+            if(isNaN(duration.asHours()))
+            {
+                this.totalHours = 0
+            }
+            console.log(duration.asHours())
         },
+
     },
     created() {
+        if (this.date.day() === 6 || this.date.day() === 0)
+        {
+            this.startTime = ""
+            this.endTime = ""
+        }
         this.recalculateTotalHours()
     },
 }
