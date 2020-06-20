@@ -2,9 +2,15 @@
     <div>
         <Header />
         <div class="week_container">
-            <ArrowButton v-bind:direction="'left'" v-on:click.native="setPreviousWeek" />
+            <ArrowButton
+                v-bind:direction="'left'"
+                v-on:click.native="setPreviousWeek"
+            />
             <CurrentWeek v-bind:date="weekStart" />
-            <ArrowButton v-bind:direction="'right'" v-on:click.native="setNextWeek" />
+            <ArrowButton
+                v-bind:direction="'right'"
+                v-on:click.native="setNextWeek"
+            />
         </div>
         <ul>
             <li v-for="day in days" :key="day">
@@ -21,6 +27,7 @@ import ArrowButton from "./components/ArrowButton.vue"
 import Day from "./components/Day.vue"
 import moment from "moment"
 import "moment/locale/cs"
+import db from "./db"
 
 moment.locale("cs")
 
@@ -30,10 +37,14 @@ export default {
     name: "App",
     data() {
         return {
-            days: [moment(), moment(), moment()],
+            days: [],
             weekStart: moment(),
             weekEnd: moment(),
+            firedays: [],
         }
+    },
+    firestore: {
+        firedays: db.collection("workDays"),
     },
     components: {
         Header: Header,
@@ -85,7 +96,7 @@ li {
 li:nth-child(even) {
     background-color: rgb(34, 34, 34);
 }
-ul{
+ul {
     margin: 0;
     padding: 0;
 }
