@@ -2,7 +2,10 @@
     <div class="dayContainer">
         <div class="date dayContainerColumn">
             <div class="dayInWeek1">
-                {{ date.locale("cs").format("dddd") }}
+                {{
+                    date.locale("cs").format("dddd").charAt(0).toUpperCase() +
+                    date.locale("cs").format("dddd").slice(1)
+                }}
             </div>
             <div class="dayInWeek2">
                 {{ date.locale("cs").format("D. M.") }}
