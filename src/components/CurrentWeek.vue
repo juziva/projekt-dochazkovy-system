@@ -23,5 +23,6 @@ export default {
     color: white;
     text-align: center;
     font-weight: bold;
+    font-size: 14px;
 }
 </style>
