@@ -82,8 +82,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: white;
+    font-family: "Open Sans", sans-serif;
 }
 .week_container {
     display: flex;

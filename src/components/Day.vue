@@ -1,7 +1,7 @@
 <template>
     <div class="dayContainer">
         <div class="date dayContainerColumn">
-            {{ date.locale("cs").format("dddd Do MMMM") }}
+            {{ date.locale("cs").format("dddd D. M.").toUpperCase() }}
         </div>
         <div class="dayContainerRow">
             <div class="startTime dayContainerColumn">
@@ -47,17 +47,14 @@ export default {
                 moment(this.endTime, "HH:mm") - moment(this.startTime, "HH:mm")
             )
             this.totalHours = duration.asHours() - 1
-            if(isNaN(duration.asHours()))
-            {
+            if (isNaN(duration.asHours())) {
                 this.totalHours = 0
             }
             console.log(duration.asHours())
         },
-
     },
     created() {
-        if (this.date.day() === 6 || this.date.day() === 0)
-        {
+        if (this.date.day() === 6 || this.date.day() === 0) {
             this.startTime = ""
             this.endTime = ""
         }
@@ -77,11 +74,11 @@ export default {
     display: flex;
     align-items: center;
     flex-grow: 1;
-    width: 90%;
+    width: 60%;
 }
 .date {
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -89,8 +86,9 @@ export default {
     flex-grow: 1;
     text-align: center;
     width: 70%;
+    font-size: 1rem;
 }
-.totalHours{
+.totalHours {
     width: 30%;
 }
 

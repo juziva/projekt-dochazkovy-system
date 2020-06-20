@@ -1,7 +1,7 @@
 <template>
     <div class="current_week_container">
-        {{ date.locale("cs").format("Do MMMM") }} -
-        {{ date.clone().locale("cs").add(6, "days").format("Do MMMM Y") }}
+        {{ date.locale("cs").format("D. M.") }} -
+        {{ date.clone().locale("cs").add(6, "days").format("D. M. Y") }}
     </div>
 </template>
 
@@ -22,5 +22,6 @@ export default {
     background-color: rgb(34, 34, 34);
     color: white;
     text-align: center;
+    font-size: 1.2rem;
 }
 </style>
