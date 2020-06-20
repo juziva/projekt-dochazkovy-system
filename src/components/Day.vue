@@ -88,28 +88,33 @@ export default {
     display: flex;
     align-items: center;
     flex-grow: 1;
-    width: 60%;
+    width: 90%;
 }
 .date {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .dayContainerColumn {
     flex-grow: 1;
     text-align: center;
-    width: 70%;
     font-size: 1rem;
+    width: 90%;
 }
 .totalHours {
-    width: 15%;
+    width: 10%;
 }
 
 input {
-    width: 85%;
+    width: 80%;
     height: 30px;
     border-radius: 3px;
     border: none;
+}
+.dayInWeek2{
+    color: rgb(128, 128, 128);
+    font-size: 14px;
 }
 </style>

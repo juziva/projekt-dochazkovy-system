@@ -89,16 +89,15 @@ body {
 }
 .week_container {
     display: flex;
-    background-color: rgb(34, 34, 34);
     justify-content: center;
 }
 li {
     list-style-type: none;
-    border-bottom: 1px solid rgb(109, 109, 109);
+    border-bottom: 1px solid rgb(83, 83, 83);
     background-color: rgb(46, 46, 46);
 }
 li:nth-child(n+6) {
-    background-color: rgb(0, 0, 0);
+    background-color: black;
 }
 
 ul {

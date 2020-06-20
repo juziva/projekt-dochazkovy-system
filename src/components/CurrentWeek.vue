@@ -18,8 +18,8 @@ export default {
 <style>
 .current_week_container {
     width: 90%;
-    padding: 20px;
-    background-color: rgb(34, 34, 34);
+    padding: 15px;
+    background-color: black;
     color: white;
     text-align: center;
 }
