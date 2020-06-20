@@ -4,7 +4,7 @@
             <div class="dayInWeek1">
                 {{ date.locale("cs").format("dddd") }}
             </div>
-            <div class="dayInWeek1">
+            <div class="dayInWeek2">
                 {{ date.locale("cs").format("D. M.") }}
             </div>
         </div>
@@ -24,7 +24,10 @@
                 />
             </div>
             <div class="totalHours dayContainerColumn">
-                {{ totalHours.toFixed(1) }}
+                {{
+                    (this.fireDay && fireDay.totalHours) ||
+                    totalHours.toFixed(1)
+                }}
             </div>
         </div>
     </div>
@@ -32,6 +35,8 @@
 
 <script>
 import moment from "moment"
+import { userId } from "../main.js"
+import db from "../db.js"
 
 export default {
     name: "Day",
@@ -40,9 +45,9 @@ export default {
             startTime: "08:00",
             endTime: "17:00",
             totalHours: 0,
+            fireDay: [],
         }
     },
-
     props: {
         date: moment,
     },
@@ -55,7 +60,6 @@ export default {
             if (isNaN(duration.asHours())) {
                 this.totalHours = 0
             }
-            console.log(duration.asHours())
         },
     },
     created() {
@@ -64,6 +68,8 @@ export default {
             this.endTime = ""
         }
         this.recalculateTotalHours()
+        const documentId = `${userId}:${this.date.format("YYYYMMDD")}`
+        this.$bind("fireDay", db.collection("workDays").doc(documentId))
     },
 }
 </script>
@@ -73,7 +79,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 130px;
+    height: 100px;
 }
 .dayContainerRow {
     display: flex;
@@ -94,13 +100,13 @@ export default {
     font-size: 1rem;
 }
 .totalHours {
-    width: 30%;
+    width: 15%;
 }
 
 input {
-    width: 60%;
+    width: 85%;
     height: 30px;
-    border-radius: 4px;
+    border-radius: 3px;
     border: none;
 }
 </style>
