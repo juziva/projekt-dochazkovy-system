@@ -1,7 +1,12 @@
 <template>
     <div class="dayContainer">
         <div class="date dayContainerColumn">
-            {{ date.locale("cs").format("dddd D. M.").toUpperCase() }}
+            <div class="dayInWeek1">
+                {{ date.locale("cs").format("dddd") }}
+            </div>
+            <div class="dayInWeek1">
+                {{ date.locale("cs").format("D. M.") }}
+            </div>
         </div>
         <div class="dayContainerRow">
             <div class="startTime dayContainerColumn">
@@ -79,7 +84,7 @@ export default {
 .date {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .dayContainerColumn {

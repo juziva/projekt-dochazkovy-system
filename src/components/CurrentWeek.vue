@@ -17,11 +17,10 @@ export default {
 
 <style>
 .current_week_container {
-    width: 60%;
+    width: 90%;
     padding: 20px;
     background-color: rgb(34, 34, 34);
     color: white;
     text-align: center;
-    font-size: 1.2rem;
 }
 </style>
