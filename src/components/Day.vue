@@ -15,14 +15,14 @@
             <div class="startTime dayContainerColumn">
                 <input
                     type="time"
-                    v-on:change="recalculateTotalHours"
+                    v-on:change="updateStartTime"
                     v-model="startTime"
                 />
             </div>
             <div class="endTime dayContainerColumn">
                 <input
                     type="time"
-                    v-on:change="recalculateTotalHours"
+                    v-on:change="updateEndTime"
                     v-model="endTime"
                 />
             </div>
@@ -42,39 +42,95 @@ export default {
     name: "Day",
     data() {
         return {
-            startTime: "08:00",
+            startTime: "8:00",
             endTime: "17:00",
             totalHours: 0,
+            documentId: `${userId}:${this.date.format("YYYYMMDD")}`,
         }
     },
     props: {
         date: moment,
     },
     methods: {
-        recalculateTotalHours() {
+        getTotalHours() {
             const duration = moment.duration(
                 moment(this.endTime, "HH:mm") - moment(this.startTime, "HH:mm")
             )
-            this.totalHours = duration.asHours() - 1
             if (isNaN(duration.asHours())) {
-                this.totalHours = 0
+                return 0
             }
+            return duration.asHours() - 1
+        },
+        updateStartTime(event) {
+            const totalHours = this.getTotalHours()
+
+            const endTime = moment(
+                `${this.date.format("YYYY-MM-DD")} ${this.endTime}`
+            ).format("x")
+
+            const startTime = moment(
+                `${this.date.format("YYYY-MM-DD")} ${event.target.value}`
+            ).format("x")
+
+            db.collection("workDays")
+                .doc(this.documentId)
+                .set({
+                    totalHours: totalHours,
+                    startTime: startTime,
+                    endTime: this.endTime,
+                })
+                .then(function () {
+                    console.log("Document successfully written!")
+                })
+                .catch(function (error) {
+                    console.error("Error writing document: ", error)
+                })
+        },
+        updateEndTime() {
+            const totalHours = this.getTotalHours()
+            const startTime = moment(
+                `${this.date.format("YYYY-MM-DD")} ${this.startTime}`
+            ).format("x")
+
+            const endTime = moment(
+                `${this.date.format("YYYY-MM-DD")} ${event.target.value}`
+            ).format("x")
+
+            db.collection("workDays")
+                .doc(this.documentId)
+                .set({
+                    totalHours: totalHours,
+                    startTime: startTime,
+                    endTime: endTime,
+                })
+                .then(function () {
+                    console.log("Document successfully written!")
+                })
+                .catch(function (error) {
+                    console.error("Error writing document: ", error)
+                })
         },
     },
     created() {
-        const documentId = `${userId}:${this.date.format("YYYYMMDD")}`
         this.unsubscribe = db
             .collection("workDays")
-            .doc(documentId)
+            .doc(this.documentId)
             .onSnapshot((doc) => {
                 if (doc.exists) {
+                    console.log
                     const fireDay = doc.data()
-                    this.startTime = moment(
-                        fireDay.startTime.seconds * 1000
-                    ).format("HH:mm")
-                    this.endTime = moment(
-                        fireDay.endTime.seconds * 1000
-                    ).format("HH:mm")
+                    if (fireDay.startTime) {
+                        this.startTime = moment(fireDay.startTime, "x").format(
+                            "HH:mm"
+                        )
+                    }
+                    if (fireDay.endTime) {
+                        this.endTime = moment(fireDay.endTime, "x").format(
+                            "HH:mm"
+                        )
+                    }
+
+                    console.log({ totalHours: fireDay.totalHours })
                     this.totalHours = fireDay.totalHours
                 }
             })
