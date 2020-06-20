@@ -27,10 +27,7 @@
                 />
             </div>
             <div class="totalHours dayContainerColumn">
-                {{
-                    (this.fireDay && fireDay.totalHours) ||
-                    totalHours.toFixed(1)
-                }}
+                {{ totalHours.toFixed(1) }}
             </div>
         </div>
     </div>
@@ -48,7 +45,6 @@ export default {
             startTime: "08:00",
             endTime: "17:00",
             totalHours: 0,
-            fireDay: [],
         }
     },
     props: {
@@ -66,13 +62,25 @@ export default {
         },
     },
     created() {
-        if (this.date.day() === 6 || this.date.day() === 0) {
-            this.startTime = ""
-            this.endTime = ""
-        }
-        this.recalculateTotalHours()
         const documentId = `${userId}:${this.date.format("YYYYMMDD")}`
-        this.$bind("fireDay", db.collection("workDays").doc(documentId))
+        this.unsubscribe = db
+            .collection("workDays")
+            .doc(documentId)
+            .onSnapshot((doc) => {
+                if (doc.exists) {
+                    const fireDay = doc.data()
+                    this.startTime = moment(
+                        fireDay.startTime.seconds * 1000
+                    ).format("HH:mm")
+                    this.endTime = moment(
+                        fireDay.endTime.seconds * 1000
+                    ).format("HH:mm")
+                    this.totalHours = fireDay.totalHours
+                }
+            })
+    },
+    unmounted() {
+        this.unsubscribe()
     },
 }
 </script>
@@ -113,7 +121,7 @@ input {
     border-radius: 3px;
     border: none;
 }
-.dayInWeek2{
+.dayInWeek2 {
     color: rgb(128, 128, 128);
     font-size: 14px;
 }
