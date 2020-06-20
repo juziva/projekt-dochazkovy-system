@@ -1,6 +1,7 @@
 <template>
   <div class="header">
     <img src="assets/logo_bila.png" alt="Logo">
+    <div class="site_description">Docházkový systém</div>
   </div>
 </template>
 
@@ -16,11 +17,16 @@ export default {
 <style>
 .header{
   background-color: #6699CC;
-  width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  color: rgb(29, 29, 29);
 }
 img{
-  width: 80%;
-  margin: 30px 0;
+  width: 25%;
+  margin: 15px 0;
+}
+.site_description{
+  align-self: center;
+
 }
 </style>

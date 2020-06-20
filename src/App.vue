@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="app_container">
         <Header />
         <div class="week_container">
             <ArrowButton
@@ -17,6 +17,7 @@
                 <Day v-bind:date="day" />
             </li>
         </ul>
+        <SendButton />
     </div>
 </template>
 
@@ -25,6 +26,7 @@ import Header from "./components/Header.vue"
 import CurrentWeek from "./components/CurrentWeek.vue"
 import ArrowButton from "./components/ArrowButton.vue"
 import Day from "./components/Day.vue"
+import SendButton from "./components/SendButton.vue"
 import moment from "moment"
 import "moment/locale/cs"
 import db from "./db"
@@ -40,17 +42,14 @@ export default {
             days: [],
             weekStart: moment(),
             weekEnd: moment(),
-            firedays: [],
         }
-    },
-    firestore: {
-        firedays: db.collection("workDays"),
     },
     components: {
         Header: Header,
         CurrentWeek: CurrentWeek,
         ArrowButton: ArrowButton,
         Day: Day,
+        SendButton: SendButton,
     },
     methods: {
         updateDays() {
@@ -85,6 +84,9 @@ body {
     background-color: black;
     color: white;
 }
+.app_container{
+
+}
 .week_container {
     display: flex;
     background-color: rgb(34, 34, 34);
@@ -92,10 +94,13 @@ body {
 }
 li {
     list-style-type: none;
+    border-bottom: 1px solid rgb(109, 109, 109);
+    background-color: rgb(46, 46, 46);
 }
-li:nth-child(even) {
-    background-color: rgb(34, 34, 34);
+li:nth-child(n+6) {
+    background-color: rgb(0, 0, 0);
 }
+
 ul {
     margin: 0;
     padding: 0;

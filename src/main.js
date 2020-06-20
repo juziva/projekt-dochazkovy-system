@@ -3,6 +3,8 @@ import App from './App.vue';
 import './index.html';
 import { firestorePlugin } from 'vuefire'
 
+export const userId = 1
+
 Vue.use(firestorePlugin)
 
 new Vue({
