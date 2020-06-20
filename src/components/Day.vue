@@ -19,6 +19,7 @@
                     v-model="startTime"
                 />
             </div>
+            <div>-</div>
             <div class="endTime dayContainerColumn">
                 <input
                     type="time"
@@ -90,37 +91,41 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100px;
 }
 .dayContainerRow {
     display: flex;
     align-items: center;
     flex-grow: 1;
     width: 90%;
+    margin-bottom: 10px;
 }
 .date {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin: 20px 0 10px 0;
 }
 
 .dayContainerColumn {
-    flex-grow: 1;
     text-align: center;
     font-size: 1rem;
     width: 90%;
+    
 }
 .totalHours {
     width: 10%;
 }
 
 input {
-    width: 80%;
-    height: 30px;
+    width: 70%;
     border-radius: 3px;
-    border: none;
+    border: 1px solid #676382;
+    background-color: rgb(57, 60, 79);
+    color: white;
+    padding: 8px;
 }
+
 .dayInWeek2 {
     color: rgb(128, 128, 128);
     font-size: 14px;

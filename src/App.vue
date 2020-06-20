@@ -17,7 +17,6 @@
                 <Day v-bind:date="day" />
             </li>
         </ul>
-        <SendButton />
     </div>
 </template>
 
@@ -26,7 +25,6 @@ import Header from "./components/Header.vue"
 import CurrentWeek from "./components/CurrentWeek.vue"
 import ArrowButton from "./components/ArrowButton.vue"
 import Day from "./components/Day.vue"
-import SendButton from "./components/SendButton.vue"
 import moment from "moment"
 import "moment/locale/cs"
 import db from "./db"
@@ -49,7 +47,6 @@ export default {
         CurrentWeek: CurrentWeek,
         ArrowButton: ArrowButton,
         Day: Day,
-        SendButton: SendButton,
     },
     methods: {
         updateDays() {
@@ -93,11 +90,15 @@ body {
 }
 li {
     list-style-type: none;
-    border-bottom: 1px solid rgb(83, 83, 83);
-    background-color: rgb(46, 46, 46);
+    border-bottom: 1px solid rgb(86, 83, 112);
+    background-color: #202029;
 }
-li:nth-child(n+6) {
+li:nth-child(n+6)>div {
     background-color: black;
+}
+li:nth-child(6) {
+    margin-top: 4px;
+    border-top: 1px solid rgb(86, 83, 112);
 }
 
 ul {
@@ -105,3 +106,4 @@ ul {
     padding: 0;
 }
 </style>
+    
