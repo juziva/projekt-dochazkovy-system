@@ -11,6 +11,9 @@
                 <TableRow v-bind:date="day" />
             </li>
         </ul>
+        <div class="footer">
+        <div class="totalHoursOfMonth">Odpracováno: 170 hodin</div><button>Podklady pro mzdu</button>
+        </div>
     </div>
 </template>
 
@@ -77,7 +80,6 @@ body {
     background-color: rgb(0, 0, 0);
     color: white;
 }
-
 .week_container {
     display: flex;
     justify-content: center;
@@ -87,17 +89,29 @@ li {
     border-bottom: 1px solid rgb(86, 83, 112);
     background-color: #202029;
 }
-li:nth-child(n + 6) > div {
-    background-color: black;
-}
-li:nth-child(6) {
-    margin-top: 4px;
-    border-top: 1px solid rgb(86, 83, 112);
-}
-
 ul {
     margin: 0;
     padding: 0;
+}
+.footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #6699CC;
+    padding: 16px;
+}
+.totalHoursOfMonth{
+    align-self: center;
+    color: black;
+}
+button{
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgb(24, 24, 24);
+    color: white;
+    font-size: 14px;
+    align-self: center;
 }
 @media screen and (min-width: 800px) {
     .app_container {
@@ -105,14 +119,5 @@ ul {
         margin: 0 auto;
     }
 }
-.snackbar {
-    position: sticky;
-    bottom: 5px;
-    background-color: #6699cc;
-    padding: 20px;
-    border-radius: 2px;
-    margin: 5px;
-    text-align: center;
-    color: black;
-}
+
 </style>

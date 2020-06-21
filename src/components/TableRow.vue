@@ -1,8 +1,8 @@
 <template>
     <div class="dayItem">
-        <div class="dayContainer">
-        <div class="dayContainerRow">
-          <div class="currentDay">
+        <div class="dayContainerAdmin">
+        <div class="dayContainerRowAdmin">
+          <div class="currentDayAdmin">
             <div class="dayInWeek1">
                 {{
                     date.locale("cs").format("dddd").charAt(0).toUpperCase() +
@@ -13,12 +13,12 @@
                 {{ date.locale("cs").format("D. M.") }}
             </div>
           </div>
-            <div class="inputField">
-            <div class="startTime dayContainerColumn">
+            <div class="inputFieldAdmin">
+            <div class="startTimeAdmin dayContainerColumn">
                 {{startTime}}
             </div>
             <div class="divider">-</div>
-            <div class="endTime dayContainerColumn">
+            <div class="endTimeAdmin dayContainerColumn">
                 {{endTime}}
             </div>
             </div>
@@ -84,9 +84,9 @@ export default {
 *{
     box-sizing: border-box;
 }
-.currentDay{
+.currentDayAdmin{
   display: flex;
-  width: 30%;
+  width: 35%;
   border-right: 1px solid rgb(86, 83, 112);
 }
 .dayItem {
@@ -94,21 +94,20 @@ export default {
     flex-direction: column;
     align-items: center;
 }
-.dayContainer{
-    padding: 16px;
+.dayContainerAdmin{
+    padding: 10px 24px;
     width: 100%;
 }
-.dayContainerRow {
+.dayContainerRowAdmin {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 16px;
 }
 .dayContainerColumn {
     display: flex;
     align-items: center;
 }
-.inputField{
+.inputFieldAdmin{
     display: flex;
     justify-content: space-between;
     width: 40%;
@@ -120,11 +119,13 @@ export default {
     padding-left: 5px;
     border-left: 1px solid rgb(86, 83, 112);
 }
-.startTime{
+.startTimeAdmin{
     width: 50%;
+    font-size: 14px;
 }
-.endTime{
+.endTimeAdmin{
     width: 50%;
+    font-size: 14px;
 }
 .dayInWeek2 {
     color: rgb(128, 128, 128);

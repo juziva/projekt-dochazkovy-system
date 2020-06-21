@@ -75,8 +75,6 @@ body {
     background-color: rgb(0, 0, 0);
     color: white;
 }
-.app_container {
-}
 .week_container {
     display: flex;
     justify-content: center;
@@ -93,7 +91,6 @@ li:nth-child(6) {
     margin-top: 4px;
     border-top: 1px solid rgb(86, 83, 112);
 }
-
 ul {
     margin: 0;
     padding: 0;
@@ -105,13 +102,13 @@ ul {
     }
 }
 .snackbar {
-    position: sticky;
-    bottom: 5px;
-    background-color: #6699cc;
-    padding: 20px;
-    border-radius: 2px;
-    margin: 5px;
+     position: sticky;
+    bottom: 16px;
+    background-color: #2b2b2b;
+    padding: 14px;
+    border-radius: 6px;
+    margin: 16px;
     text-align: center;
-    color: black;
+    color: rgb(216, 216, 216);
 }
 </style>

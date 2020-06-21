@@ -76,7 +76,7 @@ export default {
 
             this.updateDayRecordinFirebase({ startTime, endTime, totalHours })
             console.log(this.$snack)
-            this.$snack.success("Upraveno")
+            this.$snack.success("Docházka aktualizována")
         },
         updateDayRecordinFirebase({ startTime, endTime, totalHours }) {
             db.collection("workDays")
@@ -101,7 +101,7 @@ export default {
 
             this.updateDayRecordinFirebase({ startTime, endTime, totalHours })
             console.log(this.$snack)
-            this.$snack.success("Upraveno")
+            this.$snack.success("Docházka aktualizována")
         },
         updateDayDataFromFirebase(dayRecord) {
             if (dayRecord.startTime) {

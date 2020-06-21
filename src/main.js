@@ -14,7 +14,7 @@ moment.locale("cs")
 
 const routes = {
   '/': EmployeePage,
-  '/ll': EmployerPage
+  '/admin': EmployerPage
 }
 
 Vue.use(firestorePlugin)
