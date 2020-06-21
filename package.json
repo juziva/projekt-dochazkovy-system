@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack -d",
     "watch": "webpack -wd",
-    "start": "webpack-dev-server"
+    "start:local": "webpack-dev-server --history-api-fallback",
+    "start": "node src/serve.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,7 +24,9 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "connect-history-api-fallback": "^1.6.0",
     "database": "0.0.2",
+    "express": "^4.17.1",
     "firebase": "^7.15.3",
     "moment": "^2.26.0",
     "vue": "^2.6.10",
