@@ -6,7 +6,7 @@
             <CurrentMonth v-bind:date="monthStart" />
             <ArrowButton v-bind:direction="'right'" v-on:click.native="setNextMonth" />
         </div>
-        <ul>
+        <ul class="admin" >
             <li v-for="day in days" :key="day">
                 <TableRow v-bind:date="day" />
             </li>
@@ -88,6 +88,13 @@ li {
     list-style-type: none;
     border-bottom: 1px solid rgb(86, 83, 112);
     background-color: #202029;
+}
+.admin li {
+    background-color: black !important;
+}
+.admin li:nth-child(6) {
+    margin-top: 0;
+    border-top: none;
 }
 ul {
     margin: 0;

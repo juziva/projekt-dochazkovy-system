@@ -27,6 +27,7 @@ img{
 }
 .site_description{
   align-self: center;
+  font-weight: bold;
 
 }
 </style>

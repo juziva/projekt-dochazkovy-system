@@ -104,11 +104,11 @@ ul {
 .snackbar {
      position: sticky;
     bottom: 16px;
-    background-color: #2b2b2b;
+    background-color: rgb(206, 82, 0);
     padding: 14px;
     border-radius: 6px;
     margin: 16px;
     text-align: center;
-    color: rgb(216, 216, 216);
+    color: rgb(255, 255, 255);
 }
 </style>
