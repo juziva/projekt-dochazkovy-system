@@ -103,6 +103,14 @@ ul {
         width: 800px;
         margin: 0 auto;
     }
+.snackbar {
+    position: sticky;
+    bottom: 5px;
+    background-color: #6699cc;
+    padding: 20px;
+    border-radius: 2px;
+    margin: 5px;
+    text-align: center;
+    color: black;
 }
 </style>
-    
