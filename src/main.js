@@ -18,7 +18,7 @@ const routes = {
 }
 
 Vue.use(firestorePlugin)
-Vue.use(VueSnackbar, { position: 'bottom-right', time: 2000 })
+Vue.use(VueSnackbar, { position: 'bottom-right', time: 3000 })
 
 new Vue({
   el: '#app',
