@@ -50,7 +50,7 @@ export default {
     methods: {
         updateDays() {
             const days = []
-            for (let i = 0; i <= 30; i++) {
+            for (let i = 0; i <= moment(this.monthStart).daysInMonth() - 1; i++) {
                 days.push(moment(this.monthStart).add(i, "days"))
             }
             this.days = days
