@@ -1,39 +1,43 @@
 <template>
     <div class="dayItem">
         <div class="dayContainer">
-        <div class="dayContainerColumn">
-            <div class="dayInWeek1">
-                {{
-                    date.locale("cs").format("dddd").charAt(0).toUpperCase() +
-                    date.locale("cs").format("dddd").slice(1)
-                }}
+            <div class="dayContainerColumn">
+                <div class="dayInWeek1">
+                    {{
+                        date
+                            .locale("cs")
+                            .format("dddd")
+                            .charAt(0)
+                            .toUpperCase() +
+                        date.locale("cs").format("dddd").slice(1)
+                    }}
+                </div>
+                <div class="dayInWeek2">
+                    {{ date.locale("cs").format("D. M.") }}
+                </div>
             </div>
-            <div class="dayInWeek2">
-                {{ date.locale("cs").format("D. M.") }}
+            <div class="dayContainerRow">
+                <div class="inputField">
+                    <div class="startTime dayContainerColumn">
+                        <input
+                            type="time"
+                            v-on:change="updateStartTime"
+                            v-model="startTime"
+                        />
+                    </div>
+                    <div class="divider">-</div>
+                    <div class="endTime dayContainerColumn">
+                        <input
+                            type="time"
+                            v-on:change="updateEndTime"
+                            v-model="endTime"
+                        />
+                    </div>
+                </div>
+                <div class="totalHours dayContainerColumn">
+                    {{ totalHours.toFixed(1) }}
+                </div>
             </div>
-        </div>
-        <div class="dayContainerRow">
-            <div class="inputField">
-            <div class="startTime dayContainerColumn">
-                <input
-                    type="time"
-                    v-on:change="updateStartTime"
-                    v-model="startTime"
-                />
-            </div>
-            <div class="divider">-</div>
-            <div class="endTime dayContainerColumn">
-                <input
-                    type="time"
-                    v-on:change="updateEndTime"
-                    v-model="endTime"
-                />
-            </div>
-            </div>
-            <div class="totalHours dayContainerColumn">
-                {{ totalHours.toFixed(1) }}
-            </div>
-        </div>
         </div>
     </div>
 </template>
@@ -76,7 +80,7 @@ export default {
 
             this.updateDayRecordinFirebase({ startTime, endTime, totalHours })
             console.log(this.$snack)
-            this.$snack.success("Upraveno")
+            this.$snack.success("Aktualizováno")
         },
         updateDayRecordinFirebase({ startTime, endTime, totalHours }) {
             db.collection("workDays")
@@ -101,7 +105,7 @@ export default {
 
             this.updateDayRecordinFirebase({ startTime, endTime, totalHours })
             console.log(this.$snack)
-            this.$snack.success("Upraveno")
+            this.$snack.success("Aktualizováno")
         },
         updateDayDataFromFirebase(dayRecord) {
             if (dayRecord.startTime) {
@@ -139,7 +143,7 @@ export default {
 </script>
 
 <style>
-*{
+* {
     box-sizing: border-box;
 }
 .dayItem {
@@ -147,7 +151,7 @@ export default {
     flex-direction: column;
     align-items: center;
 }
-.dayContainer{
+.dayContainer {
     padding: 16px;
     width: 100%;
 }
@@ -162,7 +166,7 @@ export default {
     align-items: center;
     justify-content: center;
 }
-.inputField{
+.inputField {
     display: flex;
     justify-content: space-between;
     width: 90%;
@@ -173,10 +177,10 @@ export default {
     font-size: 14px;
     padding-left: 5px;
 }
-.startTime{
+.startTime {
     width: 50%;
 }
-.endTime{
+.endTime {
     width: 50%;
 }
 input {
@@ -194,7 +198,7 @@ input {
 .dayInWeek1 {
     padding: 0 10px 0 0;
 }
-.divider{
+.divider {
     padding: 0 10px;
 }
 </style>
