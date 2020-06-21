@@ -38,6 +38,7 @@
 import moment from "moment"
 import { userId } from "../main.js"
 import db from "../db.js"
+import { sn } from "vuetify"
 
 export default {
     name: "Day",
@@ -70,6 +71,8 @@ export default {
             const startTime = this.formatTimeToDbFormat(event.target.value)
 
             this.updateDayRecordinFirebase({ startTime, endTime, totalHours })
+            console.log(this.$snack)
+            this.$snack.success("Upraveno")
         },
         updateDayRecordinFirebase({ startTime, endTime, totalHours }) {
             db.collection("workDays")
@@ -93,6 +96,8 @@ export default {
             const endTime = this.formatTimeToDbFormat(event.target.value)
 
             this.updateDayRecordinFirebase({ startTime, endTime, totalHours })
+            console.log(this.$snack)
+            this.$snack.success("Upraveno")
         },
         updateDayDataFromFirebase(dayRecord) {
             if (dayRecord.startTime) {
