@@ -95,7 +95,7 @@ export default {
     align-items: center;
 }
 .dayContainerAdmin{
-    padding: 10px 24px;
+    padding: 10px 28px;
     width: 100%;
 }
 .dayContainerRowAdmin {

@@ -112,10 +112,10 @@ ul {
     color: black;
 }
 button{
-    border: 0;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: rgb(24, 24, 24);
+    border: 1px solid rgb(165, 66, 0);
+    background-color: rgb(206, 82, 0);
+    padding: 14px;
+    border-radius: 6px;
     color: white;
     font-size: 14px;
     align-self: center;
