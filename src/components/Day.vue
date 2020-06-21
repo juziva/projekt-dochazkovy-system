@@ -173,6 +173,12 @@ export default {
     font-size: 14px;
     padding-left: 5px;
 }
+.startTime{
+    width: 50%;
+}
+.endTime{
+    width: 50%;
+}
 input {
     border-radius: 3px;
     border: 1px solid #676382;
