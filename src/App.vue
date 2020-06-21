@@ -2,22 +2,15 @@
     <div class="app_container">
         <Header />
         <div class="week_container">
-            <ArrowButton
-                v-bind:direction="'left'"
-                v-on:click.native="setPreviousWeek"
-            />
+            <ArrowButton v-bind:direction="'left'" v-on:click.native="setPreviousWeek" />
             <CurrentWeek v-bind:date="weekStart" />
-            <ArrowButton
-                v-bind:direction="'right'"
-                v-on:click.native="setNextWeek"
-            />
+            <ArrowButton v-bind:direction="'right'" v-on:click.native="setNextWeek" />
         </div>
         <ul>
             <li v-for="day in days" :key="day">
                 <Day v-bind:date="day" />
             </li>
         </ul>
-        <div id="snackbar">Hodiny aktualizovány</div>
     </div>
 </template>
 
@@ -82,8 +75,7 @@ body {
     background-color: rgb(0, 0, 0);
     color: white;
 }
-.app_container{
-
+.app_container {
 }
 .week_container {
     display: flex;
@@ -94,7 +86,7 @@ li {
     border-bottom: 1px solid rgb(86, 83, 112);
     background-color: #202029;
 }
-li:nth-child(n+6)>div {
+li:nth-child(n + 6) > div {
     background-color: black;
 }
 li:nth-child(6) {
@@ -105,6 +97,12 @@ li:nth-child(6) {
 ul {
     margin: 0;
     padding: 0;
+}
+@media screen and (min-width: 800px) {
+    .app_container {
+        width: 800px;
+        margin: 0 auto;
+    }
 }
 </style>
     

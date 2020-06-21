@@ -191,5 +191,7 @@ input {
 }
 .divider{
     padding: 0 10px;
+    display: flex;
+    align-self: center;
 }
 </style>
