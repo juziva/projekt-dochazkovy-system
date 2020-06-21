@@ -47,9 +47,9 @@ export default {
     name: "Day",
     data() {
         return {
-            startTime: "8:00",
+            startTime: "08:00",
             endTime: "17:00",
-            totalHours: 0,
+            totalHours: 8,
             documentId: `${userId}:${this.date.format("YYYYMMDD")}`,
         }
     },
@@ -69,20 +69,19 @@ export default {
         updateStartTime(event) {
             const totalHours = this.getTotalHours()
 
-            const endTime = moment(
-                `${this.date.format("YYYY-MM-DD")} ${this.endTime}`
-            ).format("x")
+            const endTime = this.formatTimeToDbFormat(this.endTime)
 
-            const startTime = moment(
-                `${this.date.format("YYYY-MM-DD")} ${event.target.value}`
-            ).format("x")
+            const startTime = this.formatTimeToDbFormat(event.target.value)
 
+            this.updateDayRecordinFirebase({ startTime, endTime, totalHours })
+        },
+        updateDayRecordinFirebase({ startTime, endTime, totalHours }) {
             db.collection("workDays")
                 .doc(this.documentId)
                 .set({
-                    totalHours: totalHours,
-                    startTime: startTime,
-                    endTime: this.endTime,
+                    totalHours,
+                    startTime,
+                    endTime,
                 })
                 .then(function () {
                     console.log("Document successfully written!")
@@ -93,27 +92,28 @@ export default {
         },
         updateEndTime() {
             const totalHours = this.getTotalHours()
-            const startTime = moment(
-                `${this.date.format("YYYY-MM-DD")} ${this.startTime}`
-            ).format("x")
+            const startTime = this.formatTimeToDbFormat(this.startTime)
 
-            const endTime = moment(
-                `${this.date.format("YYYY-MM-DD")} ${event.target.value}`
-            ).format("x")
+            const endTime = this.formatTimeToDbFormat(event.target.value)
 
-            db.collection("workDays")
-                .doc(this.documentId)
-                .set({
-                    totalHours: totalHours,
-                    startTime: startTime,
-                    endTime: endTime,
-                })
-                .then(function () {
-                    console.log("Document successfully written!")
-                })
-                .catch(function (error) {
-                    console.error("Error writing document: ", error)
-                })
+            this.updateDayRecordinFirebase({ startTime, endTime, totalHours })
+        },
+        updateDayDataFromFirebase(dayRecord) {
+            if (dayRecord.startTime) {
+                this.startTime = moment(dayRecord.startTime, "x").format(
+                    "HH:mm"
+                )
+            }
+            if (dayRecord.endTime) {
+                this.endTime = moment(dayRecord.endTime, "x").format("HH:mm")
+            }
+
+            this.totalHours = dayRecord.totalHours
+        },
+        formatTimeToDbFormat(time) {
+            return moment(`${this.date.format("YYYY-MM-DD")} ${time}`).format(
+                "x"
+            )
         },
     },
     created() {
@@ -122,21 +122,8 @@ export default {
             .doc(this.documentId)
             .onSnapshot((doc) => {
                 if (doc.exists) {
-                    console.log
-                    const fireDay = doc.data()
-                    if (fireDay.startTime) {
-                        this.startTime = moment(fireDay.startTime, "x").format(
-                            "HH:mm"
-                        )
-                    }
-                    if (fireDay.endTime) {
-                        this.endTime = moment(fireDay.endTime, "x").format(
-                            "HH:mm"
-                        )
-                    }
-
-                    console.log({ totalHours: fireDay.totalHours })
-                    this.totalHours = fireDay.totalHours
+                    const dayRecord = doc.data()
+                    this.updateDayDataFromFirebase(dayRecord)
                 }
             })
     },
@@ -175,12 +162,6 @@ export default {
     justify-content: space-between;
     width: 90%;
 }
-.startTime{
-    width: 50%;
-}
-.endTime{
-    width: 50%;
-}
 .totalHours {
     width: 50px;
     color: rgb(128, 128, 128);
@@ -199,7 +180,7 @@ input {
     color: rgb(128, 128, 128);
     font-size: 14px;
 }
-.dayInWeek1{
+.dayInWeek1 {
     padding: 0 10px 0 0;
 }
 .divider{
