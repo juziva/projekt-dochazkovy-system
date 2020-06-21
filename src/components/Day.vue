@@ -1,6 +1,7 @@
 <template>
-    <div class="dayContainer">
-        <div class="date dayContainerColumn">
+    <div class="dayItem">
+        <div class="dayContainer">
+        <div class="dayContainerColumn">
             <div class="dayInWeek1">
                 {{
                     date.locale("cs").format("dddd").charAt(0).toUpperCase() +
@@ -12,6 +13,7 @@
             </div>
         </div>
         <div class="dayContainerRow">
+            <div class="inputField">
             <div class="startTime dayContainerColumn">
                 <input
                     type="time"
@@ -19,7 +21,7 @@
                     v-model="startTime"
                 />
             </div>
-            <div>-</div>
+            <div class="divider">-</div>
             <div class="endTime dayContainerColumn">
                 <input
                     type="time"
@@ -27,9 +29,11 @@
                     v-model="endTime"
                 />
             </div>
+            </div>
             <div class="totalHours dayContainerColumn">
                 {{ totalHours.toFixed(1) }}
             </div>
+        </div>
         </div>
     </div>
 </template>
@@ -143,50 +147,62 @@ export default {
 </script>
 
 <style>
-.dayContainer {
+*{
+    box-sizing: border-box;
+}
+.dayItem {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+.dayContainer{
+    padding: 16px;
+    width: 100%;
+}
 .dayContainerRow {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-    width: 90%;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    padding-top: 16px;
 }
-.date {
+.dayContainerColumn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    margin: 20px 0 10px 0;
 }
-
-.dayContainerColumn {
-    text-align: center;
-    font-size: 1rem;
+.inputField{
+    display: flex;
+    justify-content: space-between;
     width: 90%;
-    
+}
+.startTime{
+    width: 50%;
+}
+.endTime{
+    width: 50%;
 }
 .totalHours {
-    width: 10%;
+    width: 50px;
+    color: rgb(128, 128, 128);
+    font-size: 14px;
+    padding-left: 5px;
 }
-
 input {
-    width: 70%;
     border-radius: 3px;
     border: 1px solid #676382;
     background-color: rgb(57, 60, 79);
     color: white;
     padding: 8px;
+    width: 100%;
 }
-
 .dayInWeek2 {
     color: rgb(128, 128, 128);
     font-size: 14px;
 }
 .dayInWeek1{
     padding: 0 10px 0 0;
+}
+.divider{
+    padding: 0 10px;
 }
 </style>
