@@ -12,7 +12,7 @@
             </li>
         </ul>
         <div class="footer">
-        <div class="totalHoursOfMonth">Odpracováno: 170 hodin</div><button>Podklady pro mzdu</button>
+        <div class="totalHoursOfMonth">Odpracováno: 170 hodin</div><ExportButton />
         </div>
     </div>
 </template>
@@ -23,6 +23,7 @@ import CurrentMonth from "./CurrentMonth.vue"
 import ArrowButton from "./ArrowButton.vue"
 import Day from "./Day.vue"
 import TableRow from "./TableRow.vue"
+import ExportButton from "./ExportButton.vue"
 import moment from "moment"
 import "moment/locale/cs"
 import db from "../db"
@@ -45,7 +46,8 @@ export default {
         CurrentMonth: CurrentMonth,
         ArrowButton: ArrowButton,
         Day: Day,
-        TableRow: TableRow
+        TableRow: TableRow,
+        ExportButton: ExportButton
     },
     methods: {
         updateDays() {
@@ -111,15 +113,7 @@ ul {
     align-self: center;
     color: black;
 }
-button{
-    border: 1px solid rgb(165, 66, 0);
-    background-color: rgb(206, 82, 0);
-    padding: 14px;
-    border-radius: 6px;
-    color: white;
-    font-size: 14px;
-    align-self: center;
-}
+
 @media screen and (min-width: 800px) {
     .app_container {
         width: 800px;
