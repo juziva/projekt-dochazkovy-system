@@ -23,6 +23,7 @@ export default {
 }
 img{
   width: 25%;
+  height: 100%;
   margin: 15px 0;
 }
 .site_description{
